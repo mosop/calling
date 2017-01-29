@@ -1,0 +1,9 @@
+name: calling
+version: 0.1.0
+
+authors:
+  - mosop
+
+crystal: 0.20.5
+
+license: MIT
