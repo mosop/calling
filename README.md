@@ -60,7 +60,7 @@ module Recorded
     extend Calling::NoRec
   {% end %}
 
-  record_method :sleep, :any, {seconds: Number} do
+  record_method :sleep, :any, {seconds: Float64} do
     ::sleep seconds
   end
 end
@@ -70,7 +70,7 @@ Without the *test* flag, this code is just expanded like:
 
 ```crystal
 module Recorded
-  def self.sleep(seconds : Number)
+  def self.sleep(seconds : Float64)
     ::sleep seconds
   end
 end

@@ -35,4 +35,24 @@ module CallingReadmeSpecs
       Recorded.sleep(Calling::Any)[0][:args][:seconds].should eq SECONDS
     end
   end
+
+  module ConditionalRecording
+    SECONDS = 5_f64
+
+    module Recorded
+      extend Calling::NoRec
+
+      record_method :sleep, :any, {seconds: Float64} do
+        invoke seconds
+      end
+
+      def self.invoke(seconds)
+        {result: seconds}
+      end
+    end
+
+    it name do
+      Recorded.sleep(SECONDS).should eq({result: SECONDS})
+    end
+  end
 end

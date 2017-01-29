@@ -65,11 +65,7 @@ module Calling
             result
           end
         \{% else %}
-          \{{records}} = [] of ::NamedTuple(
-            \{% if !is_any %}
-              result: \{{result}}
-            \{% end %}
-          )
+          \{{records}} = [] of ::NamedTuple(result: \{{result}})
 
           def self.\{{call}}
             \{{block.body}}
@@ -77,11 +73,7 @@ module Calling
 
           def self.\{{name}}
             result = \{{call}}
-            \{{records}} << {
-              \{% if !is_any %}
-                result: result
-              \{% end %}
-            }
+            \{{records}} << {result: result}
             result
           end
         \{% end %}
