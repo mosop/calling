@@ -76,11 +76,26 @@ module Recorded
 end
 ```
 
+## Defining Recording Methods
+
+A recording method stores information about method calls.
+
+To define recording methods, use the record_method macro.
+
+record_method parameters:
+
+* *name* (ASTNode) : A method name.
+* *result* (TypeNode | Path) : A result type. It is needed for declaring a type of stored information.
+* *args* (NamedTupleLiteral) : A set of argument names and types. It is needed for declaring a type of stored information.
+* *&block* (Block) : A method body.
+
+Currently, record_method only supports class methods.
+
 ## The Record Object
 
-Record objects preserve information about method calls.
+Record objects have information about method calls.
 
-To access record objects, call defined methods with a corresponding result type. The result type is given by the second argument of the record_method macro.
+To access record objects, call a recording method with its corresponding result type. The result type is given by the second argument of the record_method macro.
 
 Then you get a named tuple that has arrays of record objects by method names.
 
@@ -92,7 +107,7 @@ The :result value is a value that a defined method returns.
 
 ### Any Result Type
 
-If you don't want a specific result type, call the record macro giving an :any symbol. Then you can access record objects with the Calling::Any type.
+If you don't want to intend a specific result type, set an :any symbol to the second argument of record_method. Then you can access record objects with the Calling::Any type.
 
 If a result type is any, corresponding record objects don't have the :result value.
 
