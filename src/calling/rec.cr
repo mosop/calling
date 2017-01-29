@@ -1,6 +1,7 @@
 module Calling
   module Rec
     macro extended
+      # :nodoc:
       macro record_method(name, result, args = nil, &block)
         \{% if result == :any %}
           \{%

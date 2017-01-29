@@ -53,6 +53,8 @@ module CallingReadmeSpecs
 
     it name do
       Recorded.sleep(SECONDS).should eq({result: SECONDS})
+      Recorded.sleep(Calling::Any).class.should eq Array({args: {seconds: Float64}})
+      Recorded.sleep(Calling::Any).size.should eq 0
     end
   end
 end
