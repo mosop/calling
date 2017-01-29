@@ -5,7 +5,7 @@ module CallingReadmeSpecs
     TIME = Time.parse("20170129T123456+0900", "%Y%m%dT%H%M%S%z")
 
     module Recorded
-      class Time
+      module Time
         extend Calling::Rec
 
         record_method :now, ::Time do

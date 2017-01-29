@@ -22,7 +22,7 @@ dependencies:
 
 ```crystal
 module Recorded
-  class Time
+  module Time
     extend Calling::Rec
 
     record_method :now, ::Time do
